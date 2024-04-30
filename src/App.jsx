@@ -40,8 +40,7 @@ import * as React from 'react';
        ]
        console.log('App component is rendered. This renders only on first rendering of the App')
 
-       //this is state of the searchTerm refactored. It used to be in SearchComponent
-
+       //this is state of the searchTerm refactored. It used to be in SearchComponent (lifting state)
        const [searchTerm, setSearchTerm] = React.useState('React');
 
        //this is the callback handler. It receives the value that was passed by the 
@@ -68,7 +67,8 @@ import * as React from 'react';
 
       //refactor the above by using arrow function with an immediate return
       const searchedStories = stories.filter((story) =>
-         story.title.toLowerCase().includes(searchTerm.toLowerCase()) //you be able to search 'eact', "React", or 'react'
+         story.title.toLowerCase().includes(searchTerm.toLowerCase()) 
+                              //you be able to search 'eact', "React", or 'react'
       );
 
 
@@ -99,7 +99,10 @@ import * as React from 'react';
     return(
     <div>
         <label htmlFor="search">Search</label>
-        <input id="search" value={props.search} type="text" onChange={props.onSearch}/> 
+        <input id="search" 
+               value={props.search} 
+               type="text" 
+               onChange={props.onSearch}/> 
         <p> 
           Searching for <strong>{props.search}</strong>
          </p>
